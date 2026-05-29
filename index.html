@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="You are cordially invited to the sacred South Indian wedding ceremony of Rajalakshmi and Arun on Friday, 19 June 2026.">
+    <title>Rajalakshmi & Arun </title>
+
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- Tailwind Custom Theme Configurations for v4 -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-maroon: #800000;
+            --color-maroon-dark: #4a0000;
+            --color-gold: #D4AF37;
+            --color-gold-light: #F3E5AB;
+            --color-ivory: #FFF8E7;
+            --font-sanskrit: "Yatra One", cursive;
+            --font-serif: "Cinzel", serif;
+            --font-sans: "Outfit", sans-serif;
+            --font-cursive: "Great Vibes", cursive;
+        }
+    </style>
+
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP for Premium Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="bg-ivory text-maroon-dark font-sans selection:bg-maroon selection:text-gold">
+
+    <!-- 1. TEMPLE DOOR OPENING EXPERIENCE OVERLAY -->
+    <div id="door-overlay" class="flex items-center justify-center">
+        <!-- Left Door Half -->
+        <div class="door-half door-left flex justify-end items-center pr-12 md:pr-24">
+        </div>
+    
+        <!-- Right Door Half -->
+        <div class="door-half door-right flex justify-start items-center pl-12 md:pl-24">
+        </div>
+
+        <!-- Door Ring & Trigger Area -->
+<div id="door-trigger" class="absolute inset-0 z-40 flex flex-col items-center justify-center text-center px-4 bg-black/20">
+
+    <div class="px-6 py-3 rounded-xl border border-gold/30 bg-maroon-dark/75 backdrop-blur-md w-[300px] mx-auto shadow-xl flex flex-col items-center justify-center">
+        <button onclick="openTempleDoors()"
+        <h2 class="font-serif font-semibold text-sm tracking-[0.2em] text-gold uppercase text-center">
+            ॐ श्री गणेशाय नमः
+        </h2>
+
+        <p class="font-sanskrit text-gold-light text-[11px] tracking-wide mb-3">
+            || SRI KULADEVATHA PRASANNA ||
+        </p>
+        </button>
+    </div>
+
+</div>
+    </div>
+
+    <!-- AUDIO ELEMENTS -->
+    <audio id="wedding-music" loop>
+        <source src="assets/music/Song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 2. MAIN WEBSITE CONTENT (Hidden initially, shown after door opens) -->
+    <div id="main-content" class="living-bg min-h-screen relative overflow-y-auto">
+     <!-- Kuldevatha Corner Image -->
+<div class="hidden md:block absolute top-15 left-30 z-20">
+    <img
+        src="assets/Kuldevatha.jpg"
+        alt="Kuldevatha"
+        class="kuldevatha-corner">
+</div>
+
+        <!-- FLOATING MUSIC CONTROLS (Top Right) -->
+<div
+    class="fixed top-15 right-15 z-50 flex items-center gap-2 bg-white/80 backdrop-blur-xl px-3 py-2 rounded-full border border-[#E7D3A8]/50 shadow-lg">
+
+    <!-- Play / Pause -->
+    <button id="music-play-pause"
+        class="w-8 h-8 flex items-center justify-center rounded-full bg-[#C98FA0] text-white hover:scale-105 transition-all">
+        ❚❚
+
+    </button>
+
+    <!-- Mute -->
+    <button id="music-mute"
+        class="w-8 h-8 flex items-center justify-center rounded-full bg-[#C98FA0] text-white hover:scale-105 transition-all">
+        🔊
+    </button>
+
+    <!-- Volume -->
+    <input
+        type="range"
+        id="music-volume"
+        min="0"
+        max="1"
+        step="0.05"
+        value="0.2"
+        class="w-20 accent-[#C98FA0] cursor-pointer">
+
+</div>
+
+        <!-- HEADER BANNER -->
+        <header class="w-full text-center py-3 bg-maroon text-gold border-b-2 border-gold shadow-md relative z-10">
+            <div class="font-sanskrit text-xs md:text-sm font-bold tracking-[0.2em] uppercase">
+                || SRI KULADEVATHA PRASANNA ||
+            </div>
+        </header>
+
+        <!-- MAIN CONTAINER -->
+        <main class="max-w-4xl mx-auto px-4 py-12 flex flex-col items-center relative z-10">
+           
+
+            <!-- PREMIUM INVITATION HERO -->
+
+    <section id="invitation-hero" class="w-full max-w-5xl mx-auto mb-24">
+
+    <div class="invitation-frame text-center px-8 py-16">
+
+        <!-- First Appears -->
+        <p class="invite-line intro-line">
+            Together With Their Families
+        </p>
+
+        <!-- Second Appears -->
+        <h1 class="bride-name bride-reveal">
+            Rajalakshmi
+        </h1>
+
+        <div class="ampersand ampersand-reveal">
+            &
+        </div>
+
+        <h1 class="groom-name groom-reveal">
+            Arun
+        </h1>
+
+        <!-- Third Appears -->
+        <p class="invite-text details-1">
+            Solicit your gracious presence <br>
+            on the auspicious occasion of the wedding ceremony
+        </p>
+
+        <!-- Fourth Appears -->
+        <div class="invite-date details-2">
+            Friday • 19 June 2026
+        </div>
+
+        <!-- Fifth Appears -->
+        <div class="invite-muhurtham details-3">
+            Muhurtham • 12:00 PM
+        </div>
+
+    </div>
+
+</section>
+
+            <div class="w-full text-center mb-16 invitation-hosts">
+
+    <p class="font-serif text-maroon text-sm tracking-[0.25em] uppercase mb-8">
+        <b>With The Blessings Of Their Families </b>
+    </p>
+
+    <div class="family-block mb-8">
+
+        <h4 class="family-name">
+            Smt. Rajini & Sri Ramachandra Nayak
+        </h4>
+
+        <p class="family-place">
+            Shettibettu, Kadthala
+        </p>
+
+    </div>
+
+    <div class="family-divider">
+        &
+    </div>
+
+    <div class="family-block mt-8">
+
+        <h4 class="family-name">
+            Smt. Vrinda & Sri Laxman Bhat
+        </h4>
+
+        <p class="family-place">
+            Bantwal
+        </p>
+
+    </div>
+
+    <p class="invitation-message mt-12">
+        <b>with hearts full of joy,
+we invite you to witness and bless
+the beginning of a beautiful lifelong journey.</b>
+    </p>
+</div>
+
+            <!-- WEDDING DATE & MUHURTHAM CARD -->
+            <div class="w-full temple-card p-6 md:p-8 rounded-3xl text-center mb-12 relative overflow-hidden">
+                <div class="toran-container"></div>
+                <h3 class="font-serif text-gold text-lg md:text-xl font-bold tracking-widest uppercase mt-6 mb-2">The
+                    Auspicious Date</h3>
+                <div
+                    class="text-maroon font-serif font-extrabold text-3xl md:text-5xl tracking-wide my-4 flex flex-col md:flex-row justify-center items-center gap-3">
+                    <span>FRIDAY</span>
+                    <span class="hidden md:inline text-gold">•</span>
+                    <span class="text-gold">19 JUNE 2026</span>
+                </div>
+                <div
+                    class="bg-maroon text-gold py-3 px-6 rounded-full inline-block font-serif font-bold text-xs md:text-sm tracking-widest uppercase shadow">
+                    Muhurtham: 12:00 PM (Simha Lagnam)
+                </div>
+            </div>
+
+            <!-- COUNTDOWN TIMER SECTION -->
+            <div
+                class="w-full countdown-box rounded-3xl p-6 md:p-8 text-center text-gold mb-12 relative overflow-hidden">
+                <!-- Floating lamps particles inside background -->
+                <div
+                    class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent">
+                </div>
+
+                <h4 class="font-serif text-xs md:text-sm font-bold tracking-widest uppercase mb-6">Auspicious Muhurtham
+                    Begins In:</h4>
+
+                <div class="flex justify-around items-center max-w-md mx-auto">
+                    <!-- Days -->
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 md:w-20 md:h-20 bg-maroon-dark/60 rounded-2xl flex items-center justify-center border border-gold/40 shadow-inner">
+                            <span id="days" class="font-serif text-2xl md:text-4xl font-extrabold text-white">00</span>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-wider mt-2 opacity-90">Days</span>
+                    </div>
+                    <div class="text-xl md:text-3xl font-bold mb-6">:</div>
+                    <!-- Hours -->
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 md:w-20 md:h-20 bg-maroon-dark/60 rounded-2xl flex items-center justify-center border border-gold/40 shadow-inner">
+                            <span id="hours" class="font-serif text-2xl md:text-4xl font-extrabold text-white">00</span>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-wider mt-2 opacity-90">Hours</span>
+                    </div>
+                    <div class="text-xl md:text-3xl font-bold mb-6">:</div>
+                    <!-- Minutes -->
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 md:w-20 md:h-20 bg-maroon-dark/60 rounded-2xl flex items-center justify-center border border-gold/40 shadow-inner">
+                            <span id="minutes"
+                                class="font-serif text-2xl md:text-4xl font-extrabold text-white">00</span>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-wider mt-2 opacity-90">Mins</span>
+                    </div>
+                    <div class="text-xl md:text-3xl font-bold mb-6">:</div>
+                    <!-- Seconds -->
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 md:w-20 md:h-20 bg-maroon-dark/60 rounded-2xl flex items-center justify-center border border-gold/40 shadow-inner">
+                            <span id="seconds"
+                                class="font-serif text-2xl md:text-4xl font-extrabold text-white">00</span>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-wider mt-2 opacity-90">Secs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VENUE SECTION WITH BANANA PLANTS FLANKING -->
+            <section id="venue-section" class="w-full relative py-6 flex flex-col items-center mb-12">
+                <!-- Banana Plant Vector SVG Left -->
+                <div class="absolute -left-12 bottom-0 w-24 md:w-32 z-20 banana-plant-left hidden md:block select-none">
+                    <svg viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Trunk -->
+                        <path d="M45 200 C47 160 48 100 50 60 C51 100 52 160 55 200" fill="#8B4513" />
+                        <path d="M48 200 C49.5 170 50 120 50.5 80 C51 120 51.5 170 53 200" fill="#A0522D" />
+                        <!-- Leaves (Vector representations) -->
+                        <path d="M50 70 C30 50 10 70 5 90 C10 105 30 95 50 85" fill="#2E8B57" />
+                        <path d="M50 70 C70 50 90 70 95 90 C90 105 70 95 50 85" fill="#2E8B57" />
+                        <path d="M50 90 C25 80 8 110 5 130 C15 140 35 125 50 105" fill="#3CB371" />
+                        <path d="M50 90 C75 80 92 110 95 130 C85 140 65 125 50 105" fill="#3CB371" />
+                        <path d="M50 110 C30 115 15 140 10 160 C25 165 40 150 50 125" fill="#228B22" />
+                        <path d="M50 110 C70 115 85 140 90 160 C75 165 60 150 50 125" fill="#228B22" />
+                        <!-- Mango Leaf Toran wrapping -->
+                        <path d="M42 200 Q50 195 58 200" stroke="#D4AF37" stroke-width="2" />
+                    </svg>
+                </div>
+
+                <!-- Banana Plant Vector SVG Right -->
+                <div
+                    class="absolute -right-12 bottom-0 w-24 md:w-32 z-20 banana-plant-right hidden md:block select-none">
+                    <svg viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Trunk -->
+                        <path d="M45 200 C47 160 48 100 50 60 C51 100 52 160 55 200" fill="#8B4513" />
+                        <path d="M48 200 C49.5 170 50 120 50.5 80 C51 120 51.5 170 53 200" fill="#A0522D" />
+                        <!-- Leaves -->
+                        <path d="M50 70 C30 50 10 70 5 90 C10 105 30 95 50 85" fill="#2E8B57" />
+                        <path d="M50 70 C70 50 90 70 95 90 C90 105 70 95 50 85" fill="#2E8B57" />
+                        <path d="M50 90 C25 80 8 110 5 130 C15 140 35 125 50 105" fill="#3CB371" />
+                        <path d="M50 90 C75 80 92 110 95 130 C85 140 65 125 50 105" fill="#3CB371" />
+                        <path d="M50 110 C30 115 15 140 10 160 C25 165 40 150 50 125" fill="#228B22" />
+                        <path d="M50 110 C70 115 85 140 90 160 C75 165 60 150 50 125" fill="#228B22" />
+                        <!-- Mango Leaf Toran wrapping -->
+                        <path d="M42 200 Q50 195 58 200" stroke="#D4AF37" stroke-width="2" />
+                    </svg>
+                </div>
+
+                <!-- Venue Card Content -->
+                <div class="w-full temple-card p-6 md:p-8 rounded-3xl text-center relative overflow-hidden z-10">
+                    <div class="toran-container"></div>
+                    <h3 class="font-serif text-gold text-lg md:text-xl font-bold tracking-widest uppercase mt-6 mb-4">
+                        The Wedding Mandapam</h3>
+
+                    <h4 class="font-serif text-maroon text-xl font-bold mb-2">Shree Moodu Mahaganapathi Kala Mandira
+                    </h4>
+                    <p class="text-sm font-semibold tracking-wide text-gray-700 mb-6">Bandimata, Karkala – 574104</p>
+
+                    <p class="text-xs md:text-sm text-gray-600 max-w-md mx-auto mb-8 leading-relaxed">
+                        Join us as we take our sacred steps on a beautifully decorated pathway of stone lamps, fresh
+                        jasmine garlands, and traditional banana tree pillars.
+                    </p>
+
+                    <!-- Google Maps Embed -->
+                    <div
+                        class="w-full p-[3px] bg-gradient-to-r from-gold via-yellow-100 to-gold rounded-2xl shadow-lg mb-6 overflow-hidden">
+                        <div class="bg-white rounded-[13px] overflow-hidden aspect-video h-[250px] md:h-[300px]">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Shri%20Moodu%20Mahaganapathi%20Temple%20Karkala&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                title="Wedding Venue Map Location">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Get Directions CTA -->
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Shri+Moodu+Mahaganapathi+Temple+Karkala"
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 bg-maroon text-gold hover:bg-maroon-dark hover:text-white px-6 py-3 rounded-full border border-gold/40 shadow-lg font-serif font-bold text-xs tracking-widest uppercase transition-all duration-300 transform hover:scale-105">
+                        <span>📍 Get Directions</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- FAMILY BLESSINGS SECTION -->
+            <section class="w-full mb-16 text-center">
+                <span class="text-3xl text-gold">✦ ❤️ ✦</span>
+                <h3 class="font-serif text-maroon text-2xl font-bold tracking-widest uppercase mt-2 mb-8">With Love</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Bride's Family Card -->
+                    <div class="temple-card p-6 md:p-8 rounded-3xl relative overflow-hidden">
+                        <div class="toran-container"></div>
+                        <h4
+                            class="font-serif text-gold text-base md:text-lg font-bold tracking-widest uppercase mt-6 mb-6">
+                            Bride's Family</h4>
+
+                        <ul class="text-sm font-semibold tracking-wide flex flex-col gap-4 text-gray-700">
+                            <li>
+                                <span
+                                    class="block text-xs text-gray-500 font-serif uppercase tracking-wider">Father</span>
+                                <span class="text-maroon text-base">Sri Ramachandra Nayak</span>
+                            </li>
+                            <li>
+                                <span
+                                    class="block text-xs text-gray-500 font-serif uppercase tracking-wider">Mother</span>
+                                <span class="text-maroon text-base">Smt. Rajani</span>
+                            </li>
+                            <li>
+                                <span
+                                    class="block text-xs text-gray-500 font-serif uppercase tracking-wider">Sibling</span>
+                                <span class="text-maroon text-base">Chi. Sandeep Nayak</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Groom's Family Card -->
+                    <div class="temple-card p-6 md:p-8 rounded-3xl relative overflow-hidden">
+                        <div class="toran-container"></div>
+                        <h4
+                            class="font-serif text-gold text-base md:text-lg font-bold tracking-widest uppercase mt-6 mb-6">
+                            Groom's Family</h4>
+
+                        <ul class="text-sm font-semibold tracking-wide flex flex-col gap-4 text-gray-700">
+                            <li>
+                                <span
+                                    class="block text-xs text-gray-500 font-serif uppercase tracking-wider">Father</span>
+                                <span class="text-maroon text-base">Sri Laxman Bhat</span>
+                            </li>
+                            <li>
+                                <span
+                                    class="block text-xs text-gray-500 font-serif uppercase tracking-wider">Mother</span>
+                                <span class="text-maroon text-base">Smt. Vrinda</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER: DIVINE EVENING TEMPLE ATMOSPHERE -->
+        <footer
+            class="relative w-full py-16 bg-maroon-dark text-gold text-center border-t-2 border-gold overflow-hidden">
+            <!-- SVG Starry Sky Overlay -->
+            <div class="absolute inset-0 pointer-events-none opacity-30 select-none">
+                <svg viewBox="0 0 800 200" fill="currentColor" class="w-full h-full text-gold">
+                    <circle cx="50" cy="40" r="1.2" class="star-particle" />
+                    <circle cx="150" cy="80" r="1.5" class="star-particle" />
+                    <circle cx="280" cy="30" r="1" class="star-particle" />
+                    <circle cx="420" cy="90" r="1.8" class="star-particle" />
+                    <circle cx="550" cy="50" r="1" class="star-particle" />
+                    <circle cx="680" cy="70" r="1.5" class="star-particle" />
+                    <circle cx="750" cy="30" r="1.2" class="star-particle" />
+                </svg>
+            </div>
+            <!-- Footer Texts -->
+            <div class="max-w-xl mx-auto px-6 relative z-10 flex flex-col items-center">
+               
+                <p class="font-cursive text-gold-light text-3xl md:text-4xl mb-3">Two Families, One Beautiful Beginning
+                </p>
+                <p class="text-xs md:text-sm text-gold/80 leading-relaxed max-w-md mx-auto mb-8 font-serif">
+                    With the blessings of Lord Ganesha, Kuldevatha and our elders, we invite you to celebrate this sacred union.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Custom Script Link -->
+    <script src="script.js"></script>
+</body>
+
+</html>

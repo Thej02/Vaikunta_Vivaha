@@ -1,0 +1,546 @@
+/* Luxurious South Indian Temple Wedding Theme Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&family=Yatra+One&display=swap');
+
+/* --- CSS Variables & Tokens --- */
+:root {
+    --color-maroon: #800000;
+    --color-maroon-dark: #4a0000;
+    --color-gold: #e2b82b;
+    --color-gold-light: #F3E5AB;
+    --color-ivory: #FFF8E7;
+    --color-ivory-dark: #F5E6CA;
+    --color-green: #2E8B57;
+    --color-green-light: #3CB371;
+    --font-sanskrit: 'Yatra One', cursive;
+    --font-serif: 'Cinzel', serif;
+    --font-sans: 'Outfit', sans-serif;
+    --font-cursive: 'Great Vibes', cursive;
+}
+
+.kuldevatha-corner{
+    width:90px;
+    height:auto;
+
+    border-radius:16px;
+    border:2px solid #D4AF37;
+
+    box-shadow:
+        0 0 15px rgba(212,175,55,0.4);
+
+    animation: divineGlow 4s ease-in-out infinite;
+}
+
+@keyframes divineGlow{
+    0%{
+        transform:translateY(0);
+        box-shadow:0 0 10px rgba(212,175,55,.3);
+    }
+
+    50%{
+        transform:translateY(-4px);
+        box-shadow:0 0 20px rgba(212,175,55,.6);
+    }
+
+    100%{
+        transform:translateY(0);
+        box-shadow:0 0 10px rgba(212,175,55,.3);
+    }
+}
+/* --- Smooth Scroll & Reset --- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background-color: var(--color-ivory);
+    color: var(--color-maroon-dark);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-maroon);
+    border: 2px solid var(--color-gold);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-maroon-dark);
+}
+
+/* --- Door Overlay & 3D Opening Inwards --- */
+#door-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background-color: #0b0705;
+    perspective: 1500px;
+    display: flex;
+    overflow: hidden;
+}
+
+.door-half {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9) inset;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.door-left {
+    transform-origin: left center;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.5), transparent), url('assets/temple_door.jpg');
+    background-position: left center;
+    border-right: 2px solid var(--color-gold);
+}
+
+.door-right {
+    transform-origin: right center;
+    background-image: linear-gradient(to left, rgba(0,0,0,0.5), transparent), url('assets/temple_door.jpg');
+    background-position: right center;
+    border-left: 2px solid var(--color-gold);
+}
+
+/* 3D Door Open State (Inwards) */
+#door-overlay.open .door-left {
+    transform: rotateY(110deg);
+}
+
+#door-overlay.open .door-right {
+    transform: rotateY(-110deg);
+}
+
+#door-overlay.open {
+    pointer-events: none;
+    background-color: transparent;
+    transition: background-color 2.2s ease;
+}
+#door-trigger {
+    transition: opacity 0.8s ease;
+}
+
+/* --- Traditional Decorations --- */
+.toran-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-image: radial-gradient(circle, var(--color-green) 10%, transparent 10.5%),
+                      radial-gradient(circle, var(--color-gold) 15%, transparent 15.5%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    z-index: 10;
+    opacity: 0.8;
+}
+
+/* --- Diya Flame Flickering Animation --- */
+@keyframes flicker {
+    0%, 100% {
+        transform: scale(1) rotate(-1deg);
+        opacity: 0.95;
+        filter: drop-shadow(0 0 4px rgba(253, 184, 19, 0.8));
+    }
+    30% {
+        transform: scale(0.9) rotate(1deg);
+        opacity: 0.8;
+        filter: drop-shadow(0 0 2px rgba(253, 184, 19, 0.6));
+    }
+    50% {
+        transform: scale(1.1) rotate(0deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 6px rgba(253, 184, 19, 0.9));
+    }
+    80% {
+        transform: scale(0.95) rotate(-0.5deg);
+        opacity: 0.85;
+        filter: drop-shadow(0 0 3px rgba(253, 184, 19, 0.7));
+    }
+}
+.diya-flame {
+    animation: flicker 1.5s infinite ease-in-out;
+}
+
+/* --- Monogram Logo Styles --- */
+.monogram-glow {
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+.animate-monogram {
+    animation: float 5s ease-in-out infinite;
+}
+
+/* --- Living Background --- */
+.living-bg {
+    background-image: linear-gradient(rgba(255, 248, 231, 0.85), rgba(255, 248, 231, 0.85)), url('assets/temple_bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- Ganesha Idol Glow --- */
+.ganesha-aura {
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5));
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+    }
+    50% {
+        filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.8));
+    }
+}
+
+/* --- Animated Couple Details --- */
+@keyframes coupleSway {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-4px) rotate(0.5deg);
+    }
+}
+
+
+/* --- Cursor Jasmine & Rose Petals --- */
+@keyframes petalFloat {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(var(--y-drift)) translateX(var(--x-drift)) rotate(var(--rotation)) scale(0.4);
+        opacity: 0;
+    }
+}
+
+.custom-petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+    animation: petalFloat 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Jasmine Petal (White/Creamy) */
+.jasmine-petal {
+    width: 10px;
+    height: 10px;
+    background: #FFF8E7;
+    border-radius: 150% 0 150% 150%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset -2px -2px 0px rgba(212, 175, 55, 0.1);
+}
+
+/* Rose Petal (Maroon/Red) */
+.rose-petal {
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, #b30000 20%, #800000 100%);
+    border-radius: 50% 50% 50% 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Glassmorphism Cards --- */
+.temple-card {
+    background: rgba(255, 248, 231, 0.85);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 15px 30px rgba(74, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.temple-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(74, 0, 0, 0.25);
+}
+
+/* --- Countdown Timer Styles --- */
+.countdown-box {
+    background: rgba(128, 0, 0, 0.85);
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Torans & Mango Leaves Hanging --- */
+.hanging-bell {
+    animation: swingBell 3s ease-in-out infinite;
+    transform-origin: top center;
+}
+@keyframes swingBell {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+/* --- Banana Plants Flanking --- */
+.banana-plant-left {
+    transform-origin: bottom left;
+    animation: swayPlant 8s ease-in-out infinite;
+}
+.banana-plant-right {
+    transform-origin: bottom right;
+    animation: swayPlantRight 8s ease-in-out infinite;
+}
+@keyframes swayPlant {
+    0%, 100% { transform: scaleX(1) rotate(0deg); }
+    50% { transform: scaleX(0.98) rotate(1deg); }
+}
+@keyframes swayPlantRight {
+    0%, 100% { transform: scaleX(1) rotate(0deg); }
+    50% { transform: scaleX(0.98) rotate(-1deg); }
+}
+
+/* --- Light Rays Overlay --- */
+.living-bg {
+    background-image:
+        linear-gradient(
+            rgba(255,248,231,0.15),
+            rgba(255,248,231,0.15)
+        ),
+        url('assets/temple_bg.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+/* --- Stars for Footer Atmosphere --- */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+.star-particle {
+    animation: twinkle 2s infinite ease-in-out;
+}
+.invitation-frame{
+    max-width: 750px;
+    margin: auto;
+
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 35px;
+
+    padding: 70px 40px;
+
+    box-shadow:
+        0 8px 40px rgba(0,0,0,0.12);
+
+    position: relative;
+}
+.bride-name,
+.groom-name{
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(4rem, 8vw, 7rem);
+
+    color: #7a0000;
+
+    line-height: 1;
+
+    text-shadow:
+        0 2px 15px rgba(255,255,255,0.8);
+
+    margin: 10px 0;
+}
+.ampersand{
+    font-family: "Cinzel", serif;
+    font-size: 3rem;
+    color: #836400;
+    margin: 15px 0;
+}
+.invite-line{
+    font-family: "Cinzel", serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.9rem;
+    color: #6b4c1f;
+    margin-bottom: 20px;
+}
+
+.invite-text{
+    font-size: 1.25rem;
+    color: #4a0000;
+    max-width: 650px;
+    margin: 30px auto;
+    line-height: 1.8;
+}
+
+.invite-date{
+    font-family: "Cinzel", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #7a0000;
+    margin-top: 30px;
+}
+
+.invite-muhurtham{
+    font-size: 1.9rem;
+    color: #473804;
+    font-weight: 700;
+    margin-top: 10px;
+}
+#invitation-hero .intro-line,
+#invitation-hero .bride-reveal,
+#invitation-hero .ampersand-reveal,
+#invitation-hero .groom-reveal,
+#invitation-hero .details-1,
+#invitation-hero .details-2,
+#invitation-hero .details-3{
+    opacity:0;
+}
+
+.intro-line{
+    opacity:0;
+    animation:fadeUp 1.5s forwards;
+    animation-delay:3s;
+}
+
+.bride-reveal{
+    opacity:0;
+    animation:nameReveal 2s forwards;
+    animation-delay:5s;
+}
+
+.ampersand-reveal{
+    opacity:0;
+    animation:fadeUp 1s forwards;
+    animation-delay:7s;
+}
+
+.groom-reveal{
+    opacity:0;
+    animation:nameReveal 2s forwards;
+    animation-delay:8s;
+}
+
+.details-1{
+    opacity:0;
+    animation:fadeUp 1s forwards;
+    animation-delay:10s;
+}
+
+.details-2{
+    opacity:0;
+    animation:fadeUp 1s forwards;
+    animation-delay:11s;
+}
+
+.details-3{
+    opacity:0;
+    animation:fadeUp 1s forwards;
+    animation-delay:12s;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes nameReveal{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes grandReveal{
+    0%{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    70%{
+        opacity:1;
+        transform:scale(1.08);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+.couple-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+.invitation-hosts{
+    max-width:700px;
+    margin:auto;
+}
+
+.family-name{
+    font-family:"Cinzel", serif;
+    font-size:1.65rem;
+    font-weight:600;
+    color:#6f0000;
+}
+
+.family-place{
+    margin-top:8px;
+    font-size:.95rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#471d1d;
+}
+
+.family-divider{
+    color:#312500;
+    font-size:1.5rem;
+    letter-spacing:10px;
+}
+
+.invitation-message{
+    font-family:"Cormorant Garamond", serif;
+    font-size:1.45rem;
+    line-height:1.9;
+    color:#4a0000;
+    font-style:italic;
+}
