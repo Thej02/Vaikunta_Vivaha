@@ -1,5 +1,5 @@
-# Vaikunta Vivaha
-A responsive and interactive wedding invitation website developed to deliver a modern digital invitation experience while preserving traditional South Indian wedding aesthetics.
+# Vaikunta Vivaha 
+A responsive and interactive wedding invitation website developed to deliver a modern digital invitation experience while preserving traditional South Indian wedding website aesthetics.
 
 ## Overview
 Vaikunta Vivaha is a custom-designed web application built to serve as a digital wedding invitation platform. The project combines traditional cultural elements with modern web technologies to create an engaging and memorable experience for guests.
