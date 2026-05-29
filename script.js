@@ -31,12 +31,21 @@ function openTempleDoors() {
     trigger.style.pointerEvents = "none";
 
     overlay.classList.add("open");
-    setTimeout(() => {
-    document
-        .getElementById("invitation-hero")
-        .classList.add("animate");
-}, 2500);
 
+    // Remove overlay after door animation finishes
+    setTimeout(() => {
+        overlay.style.opacity = "0";
+
+        setTimeout(() => {
+            overlay.style.display = "none";
+        }, 1000);
+    }, 2500);
+
+    setTimeout(() => {
+        document
+            .getElementById("invitation-hero")
+            .classList.add("animate");
+    }, 2500);
 }
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -81,25 +90,12 @@ if (volumeSlider) {
     });
 }
 
-    // --- 2. Mobile Navigation Menu ---
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileDropdown.classList.toggle('hidden');
-    });
-
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileDropdown.classList.add('hidden');
-        });
-    });
+    
 
     
     // --- 3. Auspicious Countdown Timer ---
     // Wedding Date: August 30, 2026 at 09:30 AM (IST)
-    const weddingDate = new Date('August 30, 2026 09:30:00').getTime();
+    const weddingDate = new Date('June 19, 2026 12:00:00').getTime();
 
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
