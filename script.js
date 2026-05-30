@@ -13,6 +13,95 @@ window.addEventListener("pageshow", () => {
     });
 
 });
+
+
+    // =========================
+// FALLING FLOWER PETALS
+// =========================
+
+const petalImages = [
+    "assets/Petals/rose-red.png",
+    "assets/Petals/rose-pink.png",
+    "assets/Petals/marigold.png"
+];
+
+function createPetal() {
+
+    const container = document.getElementById("petal-container");
+
+    if (!container) return;
+
+    const petal = document.createElement("img");
+
+    const petalImages = [
+        "assets/Petals/rose-red.png",
+        "assets/Petals/rose-pink.png",
+        "assets/Petals/marigold.png"
+    ];
+
+    petal.src =
+        petalImages[Math.floor(Math.random() * petalImages.length)];
+
+    petal.classList.add("flower-petal");
+
+    petal.style.left = Math.random() * 100 + "%";
+
+    petal.style.width =
+        (25 + Math.random() * 25) + "px";
+
+    petal.style.animation =
+        `petalFall ${8 + Math.random() * 4}s linear forwards`;
+
+    container.appendChild(petal);
+
+    petal.onload = () => {
+        console.log("Loaded:", petal.src);
+    };
+
+    petal.onerror = () => {
+        console.error("Image Missing:", petal.src);
+    };
+
+    setTimeout(() => {
+        petal.remove();
+    }, 12000);
+}
+    // Burst petals helper for form submission
+    function burstPetals() {
+        const petalColors = ['#D4AF37', '#FF8C00', '#FFA500', '#FFD700', '#FF7F50'];
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        for (let i = 0; i < 40; i++) {
+            setTimeout(() => {
+                const petal = document.createElement('div');
+                petal.className = 'marigold-petal';
+                const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+                petal.style.backgroundColor = color;
+                
+                // Blast in 360 direction
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 150 + 50;
+                const xDrift = Math.cos(angle) * distance + 'px';
+                const yDrift = Math.sin(angle) * distance + 'px';
+                const rotation = (Math.random() * 360) + 'deg';
+                
+                petal.style.setProperty('--x-drift', xDrift);
+                petal.style.setProperty('--y-drift', yDrift);
+                petal.style.setProperty('--rotation', rotation);
+
+                petal.style.left = centerX + 'px';
+                petal.style.top = centerY + 'px';
+
+                document.body.appendChild(petal);
+
+                setTimeout(() => {
+                    petal.remove();
+                }, 1200);
+        }, i * 30);
+        }
+    }
+
 // =========================
 // TEMPLE DOOR OPENING
 // =========================
@@ -64,7 +153,8 @@ function openTempleDoors() {
         setTimeout(createPetal, i * 200);
     }
 
-    setInterval(createPetal, 600);
+    window.petalInterval =
+    setInterval(createPetal, 400);
 }
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -213,83 +303,6 @@ mobileNavLinks.forEach(link => {
             setTimeout(() => {
                 petal.remove();
             }, 1200);
-        }
-    }
-
-    // =========================
-// FALLING FLOWER PETALS
-// =========================
-
-const petalImages = [
-    "assets/Petals/rose-red.png",
-    "assets/Petals/rose-pink.png",
-    "assets/Petals/marigold.png"
-];
-
-function createPetal() {
-
-    const container = document.getElementById("petal-container");
-
-    if (!container) {
-        console.log("petal-container missing");
-        return;
-    }
-
-    const petal = document.createElement("img");
-
-    petal.src = "assets/Petals/marigold.png";
-
-    petal.className = "flower-petal";
-
-    petal.style.left = "50%";
-    petal.style.top = "0";
-
-    petal.style.width = "40px";
-
-    petal.style.animation =
-        "petalFall 10s linear forwards";
-
-    container.appendChild(petal);
-
-    console.log("Petal created");
-
-    setTimeout(() => {
-        petal.remove();
-    }, 10000);
-}
-    // Burst petals helper for form submission
-    function burstPetals() {
-        const petalColors = ['#D4AF37', '#FF8C00', '#FFA500', '#FFD700', '#FF7F50'];
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-
-        for (let i = 0; i < 40; i++) {
-            setTimeout(() => {
-                const petal = document.createElement('div');
-                petal.className = 'marigold-petal';
-                const color = petalColors[Math.floor(Math.random() * petalColors.length)];
-                petal.style.backgroundColor = color;
-                
-                // Blast in 360 direction
-                const angle = Math.random() * Math.PI * 2;
-                const distance = Math.random() * 150 + 50;
-                const xDrift = Math.cos(angle) * distance + 'px';
-                const yDrift = Math.sin(angle) * distance + 'px';
-                const rotation = (Math.random() * 360) + 'deg';
-                
-                petal.style.setProperty('--x-drift', xDrift);
-                petal.style.setProperty('--y-drift', yDrift);
-                petal.style.setProperty('--rotation', rotation);
-
-                petal.style.left = centerX + 'px';
-                petal.style.top = centerY + 'px';
-
-                document.body.appendChild(petal);
-
-                setTimeout(() => {
-                    petal.remove();
-                }, 1200);
-        }, i * 30);
         }
     }
 });

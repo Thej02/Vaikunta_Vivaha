@@ -597,7 +597,11 @@ body {
 
 .flower-petal{
     position:fixed;
-    top:-50px;
+    top:-60px;
     pointer-events:none;
     z-index:999999;
+
+    will-change:transform;
+
+    user-select:none;
 }
