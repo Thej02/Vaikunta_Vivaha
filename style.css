@@ -596,3 +596,30 @@ body {
     }
 
 }
+@media (max-width:768px){
+
+    /* Music Control Container */
+    .fixed.top-15.right-15{
+        top: 50px !important;
+        right: 10px !important;
+
+        padding: 4px 8px !important;
+        gap: 4px !important;
+
+        transform: scale(0.8);
+        transform-origin: top right;
+    }
+
+    /* Buttons */
+    #music-play-pause,
+    #music-mute{
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 10px !important;
+    }
+
+    /* Volume Slider */
+    #music-volume{
+        width: 45px !important;
+    }
+}
