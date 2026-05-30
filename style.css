@@ -441,3 +441,147 @@ body {
     pointer-events:none;
     z-index:999;
 }
+/* =======================================
+   MOBILE RESPONSIVE FIXES
+   ======================================= */
+
+@media screen and (max-width:768px){
+
+    /* Kuldevatha */
+    .kuldevatha-corner{
+        width:55px;
+        border-radius:10px;
+    }
+
+    /* Hero Section */
+    #invitation-hero{
+        margin-top:60px !important;
+        margin-bottom:60px !important;
+    }
+
+    .invitation-frame{
+        width:95%;
+        padding:30px 15px;
+        border-radius:20px;
+    }
+
+    /* Bride & Groom Names */
+    .bride-name,
+    .groom-name{
+        font-size:3.2rem;
+        line-height:1;
+        margin:8px 0;
+    }
+
+    .ampersand{
+        font-size:1.7rem;
+        margin:5px 0;
+    }
+
+    .invite-line{
+        font-size:.65rem;
+        letter-spacing:2px;
+    }
+
+    .invite-text{
+        font-size:.95rem;
+        line-height:1.7;
+        margin:20px auto;
+    }
+
+    .invite-date{
+        font-size:1.3rem;
+    }
+
+    .invite-muhurtham{
+        font-size:1.1rem;
+    }
+
+    /* Family Section */
+    .family-name{
+        font-size:1.05rem;
+        line-height:1.5;
+    }
+
+    .family-place{
+        font-size:.7rem;
+        letter-spacing:2px;
+    }
+
+    .family-divider{
+        font-size:1.2rem;
+        letter-spacing:5px;
+    }
+
+    .invitation-message{
+        font-size:1rem;
+        line-height:1.7;
+        padding:0 10px;
+    }
+
+    /* Countdown */
+    .countdown-box{
+        padding:15px 10px !important;
+    }
+
+    .countdown-box .w-16{
+        width:55px !important;
+        height:55px !important;
+    }
+
+    #days,
+    #hours,
+    #minutes,
+    #seconds{
+        font-size:1.3rem !important;
+    }
+
+    /* Music Controls */
+    #music-play-pause,
+    #music-mute{
+        width:30px;
+        height:30px;
+        font-size:12px;
+    }
+
+    #music-volume{
+        width:55px;
+    }
+
+    /* Venue Card */
+    .rounded-3xl{
+        border-radius:18px !important;
+    }
+
+    h3{
+        font-size:1rem;
+    }
+
+    h4{
+        font-size:1rem;
+    }
+
+    iframe{
+        height:250px;
+    }
+
+    /* Download Button */
+    a[download]{
+        padding:12px 18px !important;
+        font-size:.7rem !important;
+    }
+
+    /* Footer */
+    footer{
+        padding:50px 15px;
+    }
+
+    footer .font-cursive{
+        font-size:2rem !important;
+    }
+
+    /* Petals */
+    .flower-petal{
+        opacity:.8;
+    }
+}
