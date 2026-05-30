@@ -546,3 +546,55 @@ body {
     color:#4a0000;
     font-style:italic;
 }
+#petal-container{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index: 9999;;
+}
+
+
+
+@keyframes petalFall{
+    0%{
+        transform:
+            translateY(-100px)
+            translateX(0)
+            rotate(0deg);
+    }
+
+    25%{
+        transform:
+            translateY(25vh)
+            translateX(-40px)
+            rotate(90deg);
+    }
+
+    50%{
+        transform:
+            translateY(50vh)
+            translateX(40px)
+            rotate(180deg);
+    }
+
+    75%{
+        transform:
+            translateY(75vh)
+            translateX(-30px)
+            rotate(270deg);
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(50px)
+            rotate(360deg);
+    }
+}
+.flower-petal{
+    position:fixed !important;
+    top:-50px !important;
+    z-index:9999 !important;
+    animation:petalFall 12s linear forwards !important;
+}

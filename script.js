@@ -14,7 +14,7 @@ window.addEventListener("pageshow", () => {
 
 });
 function openTempleDoors() {
-
+    
     const music = document.getElementById("wedding-music");
 
     music.currentTime = 328;
@@ -46,6 +46,7 @@ function openTempleDoors() {
             .getElementById("invitation-hero")
             .classList.add("animate");
     }, 2500);
+    setInterval(createPetal, 1400);
 }
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -89,8 +90,6 @@ if (volumeSlider) {
 
     });
 }
-
-    
 
     
     // --- 3. Auspicious Countdown Timer ---
@@ -154,60 +153,7 @@ if (volumeSlider) {
         });
     });
 
-    // Check LocalStorage for existing RSVP
-    const cachedRsvp = localStorage.getItem('wedding_rsvp_response');
-    if (cachedRsvp) {
-        const data = JSON.parse(cachedRsvp);
-        document.getElementById('guest-name').value = data.name;
-        document.querySelector(`input[name="attendance"][value="${data.attendance}"]`).checked = true;
-        document.getElementById('guest-count').value = data.guestCount;
-        document.getElementById('food-pref').value = data.foodPref;
-        document.getElementById('guest-note').value = data.note;
-
-        // Trigger change event to set correct visually disabled states
-        const activeRadio = document.querySelector('input[name="attendance"]:checked');
-        activeRadio.dispatchEvent(new Event('change'));
-
-        // Show success overlay directly if already RSVP'd
-        showSuccessState(false); // don't animate on page load
-    }
-
-    rsvpForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('guest-name').value;
-        const attendance = document.querySelector('input[name="attendance"]:checked').value;
-        const guestCount = document.getElementById('guest-count').value;
-        const foodPref = document.getElementById('food-pref').value;
-        const note = document.getElementById('guest-note').value;
-
-        const rsvpData = { name, attendance, guestCount, foodPref, note };
-        localStorage.setItem('wedding_rsvp_response', JSON.stringify(rsvpData));
-
-        showSuccessState(true);
-    });
-
-    rsvpResetBtn.addEventListener('click', () => {
-        rsvpSuccessOverlay.classList.add('hidden');
-        rsvpSuccessOverlay.classList.remove('flex');
-    });
-
-    function showSuccessState(animate = true) {
-        rsvpSuccessOverlay.classList.remove('hidden');
-        rsvpSuccessOverlay.classList.add('flex');
-        if (animate) {
-            setTimeout(() => {
-                rsvpSuccessOverlay.style.opacity = '1';
-            }, 10);
-            
-            // Burst petals on form success!
-            burstPetals();
-        } else {
-            rsvpSuccessOverlay.style.opacity = '1';
-        }
-    }
-
-
+    
     // --- 5. Marigold Flower Cursor Trail ---
     // Only enable cursor trail on devices with precision pointer (disable on touchscreen mobiles)
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
@@ -294,3 +240,41 @@ if (volumeSlider) {
         }
     }
 });
+const petalContainer = document.getElementById("petal-container");
+
+const petalImages = [
+    "assets/petals/rose-red.png",
+    "assets/petals/rose-pink.png",
+    "assets/petals/marigold.png"
+];
+
+function createPetal() {
+
+    const petal = document.createElement("img");
+
+    petal.src = petalImages[
+        Math.floor(Math.random() * petalImages.length)
+    ];
+
+    petal.className = "flower-petal";
+
+    petal.style.left =
+        Math.random() * window.innerWidth + "px";
+
+    petal.style.width =
+        (25 + Math.random() * 20) + "px";
+
+    petal.style.animation =
+        `petalFall ${8 + Math.random() * 6}s linear forwards`;
+
+    document.getElementById("petal-container")
+        .appendChild(petal);
+
+    petal.onerror = () => {
+        console.log("IMAGE NOT FOUND:", petal.src);
+    };
+
+    setTimeout(() => {
+        petal.remove();
+    }, 15000);
+}
