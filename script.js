@@ -13,40 +13,58 @@ window.addEventListener("pageshow", () => {
     });
 
 });
+// =========================
+// TEMPLE DOOR OPENING
+// =========================
+
 function openTempleDoors() {
-    
+
     const music = document.getElementById("wedding-music");
-
-    music.currentTime = 328;
-    music.volume = 0.2;
-
-    music.play().catch(err => {
-        console.log("Music blocked:", err);
-    });
-
     const overlay = document.getElementById("door-overlay");
     const trigger = document.getElementById("door-trigger");
+    const hero = document.getElementById("invitation-hero");
 
-    trigger.style.opacity = "0";
-    trigger.style.pointerEvents = "none";
+    if (music) {
+        music.currentTime = 328;
+        music.volume = 0.2;
 
-    overlay.classList.add("open");
+        music.play().catch(err => {
+            console.log("Music blocked:", err);
+        });
+    }
 
-    // Remove overlay after door animation finishes
-    setTimeout(() => {
-        overlay.style.opacity = "0";
+    if (trigger) {
+        trigger.style.opacity = "0";
+        trigger.style.pointerEvents = "none";
+    }
+
+    if (overlay) {
+
+        overlay.classList.add("open");
 
         setTimeout(() => {
-            overlay.style.display = "none";
-        }, 1000);
-    }, 2500);
 
-    setTimeout(() => {
-        document
-            .getElementById("invitation-hero")
-            .classList.add("animate");
-    }, 2500);
-    setInterval(createPetal, 1400);
+            overlay.style.opacity = "0";
+
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 1000);
+
+        }, 2500);
+    }
+
+    if (hero) {
+        setTimeout(() => {
+            hero.classList.add("animate");
+        }, 2500);
+    }
+
+    // Flower Petals Start
+    for (let i = 0; i < 20; i++) {
+        setTimeout(createPetal, i * 200);
+    }
+
+    setInterval(createPetal, 600);
 }
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -91,6 +109,25 @@ if (volumeSlider) {
     });
 }
 
+    // --- 2. Mobile Navigation Menu ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+   if (mobileMenuBtn && mobileDropdown) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileDropdown.classList.toggle('hidden');
+    });
+}
+
+    if (mobileNavLinks.length) {
+mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileDropdown.classList.add('hidden');
+        });
+    });
+}
+
     
     // --- 3. Auspicious Countdown Timer ---
     // Wedding Date: August 30, 2026 at 09:30 AM (IST)
@@ -129,74 +166,130 @@ if (volumeSlider) {
     const countdownInterval = setInterval(updateCountdown, 1000);
 
 
-    // --- 4. Interactive RSVP Form ---
-    const rsvpForm = document.getElementById('rsvp-form');
-    const attendanceRadios = document.getElementsByName('attendance');
-    const additionalRsvpDetails = document.getElementById('additional-rsvp-details');
-    const rsvpSuccessOverlay = document.getElementById('rsvp-success-overlay');
-    const rsvpResetBtn = document.getElementById('rsvp-reset-btn');
+    // --- 5. Marigold Flower Cursor Trail ---
+    // Only enable cursor trail on devices with precision pointer (disable on touchscreen mobiles)
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    
+    if (!isTouchDevice) {
+        let lastX = 0;
+        let lastY = 0;
+        const minDistance = 8; // min pixels cursor must move to spawn a petal
+        const petalColors = ['#D4AF37', '#FF8C00', '#FFA500', '#FFD700', '#FF7F50']; // Gold, Dark Orange, Orange, Yellow, Coral
 
-    // Toggle details (food pref and guest count) if declining
-    attendanceRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            if (e.target.value === 'declined') {
-                additionalRsvpDetails.style.opacity = '0.3';
-                additionalRsvpDetails.style.pointerEvents = 'none';
-                document.getElementById('guest-count').disabled = true;
-                document.getElementById('food-pref').disabled = true;
-            } else {
-                additionalRsvpDetails.style.opacity = '1';
-                additionalRsvpDetails.style.pointerEvents = 'auto';
-                document.getElementById('guest-count').disabled = false;
-                document.getElementById('food-pref').disabled = false;
+        window.addEventListener('mousemove', (e) => {
+            const distance = Math.hypot(e.clientX - lastX, e.clientY - lastY);
+            if (distance > minDistance) {
+                spawnPetal(e.clientX, e.clientY);
+                lastX = e.clientX;
+                lastY = e.clientY;
             }
         });
-    });
 
-    
-    
-const petalImages = [];
+        function spawnPetal(x, y) {
+            const petal = document.createElement('div');
+            petal.className = 'marigold-petal';
+            
+            // Random color from palette
+            const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+            petal.style.backgroundColor = color;
+            
+            // Set random drift values for animation
+            const xDrift = (Math.random() * 60 - 30) + 'px'; // -30px to +30px
+            const yDrift = (Math.random() * 80 + 40) + 'px';  // 40px to 120px down
+            const rotation = (Math.random() * 270 + 90) + 'deg';
+            
+            petal.style.setProperty('--x-drift', xDrift);
+            petal.style.setProperty('--y-drift', yDrift);
+            petal.style.setProperty('--rotation', rotation);
 
-[
-  "assets/Petals/rose-red.png",
-  "assets/Petals/rose-pink.png",
-  "assets/Petals/marigold.png"
-].forEach(src => {
-  const img = new Image();
-  img.src = src;
-  petalImages.push(img);
-});
+            // Positioning at cursor coordinates
+            // Subtracting half width/height (7px) to center it on cursor
+            petal.style.left = (x - 7) + 'px';
+            petal.style.top = (y - 7) + 'px';
 
-petal.src =
-  petalImages[Math.floor(Math.random()*petalImages.length)].src;
+            document.body.appendChild(petal);
+
+            // Clean up element after animation finishes
+            setTimeout(() => {
+                petal.remove();
+            }, 1200);
+        }
+    }
+
+    // =========================
+// FALLING FLOWER PETALS
+// =========================
+
+const petalImages = [
+    "assets/Petals/rose-red.png",
+    "assets/Petals/rose-pink.png",
+    "assets/Petals/marigold.png"
+];
 
 function createPetal() {
 
+    const container = document.getElementById("petal-container");
+
+    if (!container) {
+        console.log("petal-container missing");
+        return;
+    }
+
     const petal = document.createElement("img");
 
-    petal.src = petalImages[
-        Math.floor(Math.random() * petalImages.length)
-    ];
+    petal.src = "assets/Petals/marigold.png";
 
     petal.className = "flower-petal";
 
-    petal.style.left =
-        Math.random() * window.innerWidth + "px";
+    petal.style.left = "50%";
+    petal.style.top = "0";
 
-    petal.style.width =
-        (25 + Math.random() * 20) + "px";
+    petal.style.width = "40px";
 
     petal.style.animation =
-        `petalFall ${8 + Math.random() * 6}s linear forwards`;
+        "petalFall 10s linear forwards";
 
-    document.getElementById("petal-container")
-        .appendChild(petal);
+    container.appendChild(petal);
 
-    petal.onerror = () => {
-        console.log("IMAGE NOT FOUND:", petal.src);
-    };
+    console.log("Petal created");
 
     setTimeout(() => {
         petal.remove();
-    }, 15000);
+    }, 10000);
 }
+    // Burst petals helper for form submission
+    function burstPetals() {
+        const petalColors = ['#D4AF37', '#FF8C00', '#FFA500', '#FFD700', '#FF7F50'];
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        for (let i = 0; i < 40; i++) {
+            setTimeout(() => {
+                const petal = document.createElement('div');
+                petal.className = 'marigold-petal';
+                const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+                petal.style.backgroundColor = color;
+                
+                // Blast in 360 direction
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 150 + 50;
+                const xDrift = Math.cos(angle) * distance + 'px';
+                const yDrift = Math.sin(angle) * distance + 'px';
+                const rotation = (Math.random() * 360) + 'deg';
+                
+                petal.style.setProperty('--x-drift', xDrift);
+                petal.style.setProperty('--y-drift', yDrift);
+                petal.style.setProperty('--rotation', rotation);
+
+                petal.style.left = centerX + 'px';
+                petal.style.top = centerY + 'px';
+
+                document.body.appendChild(petal);
+
+                setTimeout(() => {
+                    petal.remove();
+                }, 1200);
+        }, i * 30);
+        }
+    }
+});
