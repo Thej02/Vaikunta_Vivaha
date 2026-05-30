@@ -585,3 +585,14 @@ body {
         opacity:.8;
     }
 }
+@media (max-width:768px){
+
+    .kuldevatha-corner{
+        width:55px;
+    }
+
+    .kuldevatha-wrapper{
+        top:10px;
+    }
+
+}

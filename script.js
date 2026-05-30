@@ -48,7 +48,7 @@ function createPetal() {
 
     
     petal.style.width =
-(8 + Math.random() * 4) + "px";
+(6 + Math.random() * 2) + "px";
 
     petal.style.animation =
         `petalFall ${8 + Math.random() * 4}s linear forwards`;
@@ -155,7 +155,7 @@ function openTempleDoors() {
     }
 
     window.petalInterval =
-    setInterval(createPetal, 400);
+setInterval(createPetal, 700);
 }
 document.addEventListener('DOMContentLoaded', () => {
 
