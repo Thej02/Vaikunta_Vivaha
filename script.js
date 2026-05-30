@@ -155,13 +155,20 @@ if (volumeSlider) {
 
     
     
-const petalContainer = document.getElementById("petal-container");
+const petalImages = [];
 
-const petalImages = [
-    "assets/Petals/rose-red.png",
-    "assets/Petals/rose-pink.png",
-    "assets/Petals/marigold.png"
-];
+[
+  "assets/Petals/rose-red.png",
+  "assets/Petals/rose-pink.png",
+  "assets/Petals/marigold.png"
+].forEach(src => {
+  const img = new Image();
+  img.src = src;
+  petalImages.push(img);
+});
+
+petal.src =
+  petalImages[Math.floor(Math.random()*petalImages.length)].src;
 
 function createPetal() {
 
