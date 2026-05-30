@@ -46,8 +46,9 @@ function createPetal() {
 
     petal.style.left = Math.random() * 100 + "%";
 
+    
     petal.style.width =
-        (25 + Math.random() * 25) + "px";
+(8 + Math.random() * 4) + "px";
 
     petal.style.animation =
         `petalFall ${8 + Math.random() * 4}s linear forwards`;
@@ -255,54 +256,4 @@ mobileNavLinks.forEach(link => {
     updateCountdown(); // Run immediately
     const countdownInterval = setInterval(updateCountdown, 1000);
 
-
-    // --- 5. Marigold Flower Cursor Trail ---
-    // Only enable cursor trail on devices with precision pointer (disable on touchscreen mobiles)
-    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-    
-    if (!isTouchDevice) {
-        let lastX = 0;
-        let lastY = 0;
-        const minDistance = 8; // min pixels cursor must move to spawn a petal
-        const petalColors = ['#D4AF37', '#FF8C00', '#FFA500', '#FFD700', '#FF7F50']; // Gold, Dark Orange, Orange, Yellow, Coral
-
-        window.addEventListener('mousemove', (e) => {
-            const distance = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-            if (distance > minDistance) {
-                spawnPetal(e.clientX, e.clientY);
-                lastX = e.clientX;
-                lastY = e.clientY;
-            }
-        });
-
-        function spawnPetal(x, y) {
-            const petal = document.createElement('div');
-            petal.className = 'marigold-petal';
-            
-            // Random color from palette
-            const color = petalColors[Math.floor(Math.random() * petalColors.length)];
-            petal.style.backgroundColor = color;
-            
-            // Set random drift values for animation
-            const xDrift = (Math.random() * 60 - 30) + 'px'; // -30px to +30px
-            const yDrift = (Math.random() * 80 + 40) + 'px';  // 40px to 120px down
-            const rotation = (Math.random() * 270 + 90) + 'deg';
-            
-            petal.style.setProperty('--x-drift', xDrift);
-            petal.style.setProperty('--y-drift', yDrift);
-            petal.style.setProperty('--rotation', rotation);
-
-            // Positioning at cursor coordinates
-            // Subtracting half width/height (7px) to center it on cursor
-            petal.style.left = (x - 7) + 'px';
-            petal.style.top = (y - 7) + 'px';
-
-            document.body.appendChild(petal);
-
-            // Clean up element after animation finishes
-            setTimeout(() => {
-                petal.remove();
-            }, 1200);
-        }
-    }
 });

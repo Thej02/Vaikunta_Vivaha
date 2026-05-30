@@ -133,138 +133,10 @@ body {
     transition: opacity 0.8s ease;
 }
 
-/* --- Traditional Decorations --- */
-.toran-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background-image: radial-gradient(circle, var(--color-green) 10%, transparent 10.5%),
-                      radial-gradient(circle, var(--color-gold) 15%, transparent 15.5%);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
-    z-index: 10;
-    opacity: 0.8;
-}
-
-/* --- Diya Flame Flickering Animation --- */
-@keyframes flicker {
-    0%, 100% {
-        transform: scale(1) rotate(-1deg);
-        opacity: 0.95;
-        filter: drop-shadow(0 0 4px rgba(253, 184, 19, 0.8));
-    }
-    30% {
-        transform: scale(0.9) rotate(1deg);
-        opacity: 0.8;
-        filter: drop-shadow(0 0 2px rgba(253, 184, 19, 0.6));
-    }
-    50% {
-        transform: scale(1.1) rotate(0deg);
-        opacity: 1;
-        filter: drop-shadow(0 0 6px rgba(253, 184, 19, 0.9));
-    }
-    80% {
-        transform: scale(0.95) rotate(-0.5deg);
-        opacity: 0.85;
-        filter: drop-shadow(0 0 3px rgba(253, 184, 19, 0.7));
-    }
-}
-.diya-flame {
-    animation: flicker 1.5s infinite ease-in-out;
-}
-
-/* --- Monogram Logo Styles --- */
-.monogram-glow {
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-}
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-    50% {
-        transform: translateY(-10px) scale(1.02);
-    }
-}
-.animate-monogram {
-    animation: float 5s ease-in-out infinite;
-}
-
-/* --- Living Background --- */
-.living-bg {
-    background-image: linear-gradient(rgba(255, 248, 231, 0.85), rgba(255, 248, 231, 0.85)), url('assets/temple_bg.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-
-/* --- Ganesha Idol Glow --- */
-.ganesha-aura {
-    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5));
-    animation: pulseGlow 3s ease-in-out infinite;
-}
-@keyframes pulseGlow {
-    0%, 100% {
-        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
-    }
-    50% {
-        filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.8));
-    }
-}
-
-/* --- Animated Couple Details --- */
-@keyframes coupleSway {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-4px) rotate(0.5deg);
-    }
-}
-
-
-/* --- Cursor Jasmine & Rose Petals --- */
-@keyframes petalFloat {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(var(--y-drift)) translateX(var(--x-drift)) rotate(var(--rotation)) scale(0.4);
-        opacity: 0;
-    }
-}
-
-.custom-petal {
-    position: fixed;
-    pointer-events: none;
-    z-index: 1000;
-    animation: petalFloat 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* Jasmine Petal (White/Creamy) */
-.jasmine-petal {
-    width: 10px;
-    height: 10px;
-    background: #FFF8E7;
-    border-radius: 150% 0 150% 150%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset -2px -2px 0px rgba(212, 175, 55, 0.1);
-}
-
-/* Rose Petal (Maroon/Red) */
-.rose-petal {
-    width: 12px;
-    height: 12px;
-    background: radial-gradient(circle, #b30000 20%, #800000 100%);
-    border-radius: 50% 50% 50% 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
 
 /* --- Glassmorphism Cards --- */
 .temple-card {
     background: rgba(255, 248, 231, 0.85);
-    backdrop-filter: blur(10px);
     border: 2px solid var(--color-gold);
     box-shadow: 0 15px 30px rgba(74, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -281,38 +153,6 @@ body {
     background: rgba(128, 0, 0, 0.85);
     border: 2px solid var(--color-gold);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* --- Torans & Mango Leaves Hanging --- */
-.hanging-bell {
-    animation: swingBell 3s ease-in-out infinite;
-    transform-origin: top center;
-}
-@keyframes swingBell {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    50% {
-        transform: rotate(5deg);
-    }
-}
-
-/* --- Banana Plants Flanking --- */
-.banana-plant-left {
-    transform-origin: bottom left;
-    animation: swayPlant 8s ease-in-out infinite;
-}
-.banana-plant-right {
-    transform-origin: bottom right;
-    animation: swayPlantRight 8s ease-in-out infinite;
-}
-@keyframes swayPlant {
-    0%, 100% { transform: scaleX(1) rotate(0deg); }
-    50% { transform: scaleX(0.98) rotate(1deg); }
-}
-@keyframes swayPlantRight {
-    0%, 100% { transform: scaleX(1) rotate(0deg); }
-    50% { transform: scaleX(0.98) rotate(-1deg); }
 }
 
 /* --- Light Rays Overlay --- */
@@ -340,9 +180,10 @@ body {
     max-width: 750px;
     margin: auto;
 
-    background: rgba(255,255,255,0.35);
-    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(18px);
 
     border: 1px solid rgba(255,255,255,0.4);
     border-radius: 35px;
@@ -583,7 +424,6 @@ body {
             rotate(360deg);
     }
 }
-
 #petal-container{
     position:fixed;
     top:0;
@@ -592,16 +432,12 @@ body {
     height:100%;
     pointer-events:none;
     overflow:hidden;
-    z-index:999999;
+    z-index:999;
 }
 
 .flower-petal{
     position:fixed;
-    top:-60px;
+    top:-50px;
     pointer-events:none;
-    z-index:999999;
-
-    will-change:transform;
-
-    user-select:none;
+    z-index:999;
 }
