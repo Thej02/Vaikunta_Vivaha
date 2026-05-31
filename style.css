@@ -1,6 +1,13 @@
 /* Luxurious South Indian Temple Wedding Theme Stylesheet */
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+html,
+body{
+    background:#FFF8E7 !important;
+    color:#4a0000 !important;
+}
 /* --- CSS Variables & Tokens --- */
+
 :root {
     --color-maroon: #800000;
     --color-maroon-dark: #4a0000;
@@ -43,9 +50,8 @@ body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    text-size-adjust:100%;
     -webkit-text-size-adjust:100%;
-
+    text-size-adjust:100%;
     color-scheme: light;
 }
 
@@ -678,4 +684,11 @@ body {
             ),
             url('assets/temple_bg.jpg') !important;
     }
+}
+html{
+    color-scheme: light !important;
+}
+
+body{
+    color-scheme: light !important;
 }
