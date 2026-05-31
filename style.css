@@ -21,7 +21,7 @@ body{
     --font-serif: 'Cinzel', serif;
     --font-sans: 'Outfit', sans-serif;
     --font-cursive: 'Great Vibes', cursive;
-    color-scheme: light;
+    color-scheme: only light !important;
 }
 
 .kuldevatha-corner{
@@ -40,7 +40,7 @@ body{
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 90px;
-    color-scheme: light;
+    color-scheme: only light !important;
 }
 
 body {
@@ -52,7 +52,7 @@ body {
     padding: 0;
     -webkit-text-size-adjust:100%;
     text-size-adjust:100%;
-    color-scheme: light;
+    color-scheme: only light !important;
 }
 
 /* --- Custom Scrollbar --- */
@@ -686,9 +686,9 @@ body {
     }
 }
 html{
-    color-scheme: light !important;
+    color-scheme: only light !important;
 }
 
 body{
-    color-scheme: light !important;
+    color-scheme: only light !important;
 }
