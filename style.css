@@ -1,7 +1,5 @@
 /* Luxurious South Indian Temple Wedding Theme Stylesheet */
-
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&family=Yatra+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 /* --- CSS Variables & Tokens --- */
 :root {
     --color-maroon: #800000;
@@ -180,9 +178,8 @@ body {
 }
 .bride-name,
 .groom-name{
-    font-family: "Great Vibes", cursive;
+    font-family: "Allura", cursive;
     font-size: clamp(4rem, 8vw, 7rem);
-
     color: #7a0000;
 
     line-height: 1;
