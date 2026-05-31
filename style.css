@@ -142,8 +142,8 @@ body {
 .living-bg {
     background-image:
         linear-gradient(
-            rgba(255,248,231,0.15),
-            rgba(255,248,231,0.15)
+            rgba(255,248,231,0.35),
+            rgba(255,248,231,0.35)
         ),
         url('assets/temple_bg.jpg');
 
