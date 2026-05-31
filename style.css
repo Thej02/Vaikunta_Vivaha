@@ -86,14 +86,14 @@ body {
     transform-origin: left center;
     background-image: linear-gradient(to right, rgba(0,0,0,0.5), transparent), url('assets/temple_door.jpg');
     background-position: left center;
-    border-right: 2px solid var(--color-gold);
+    border-right: 2px solid #3B2416;
 }
 
 .door-right {
     transform-origin: right center;
     background-image: linear-gradient(to left, rgba(0,0,0,0.5), transparent), url('assets/temple_door.jpg');
     background-position: right center;
-    border-left: 2px solid var(--color-gold);
+    border-left: 2px solid #3B2416;
 }
 
 /* 3D Door Open State (Inwards) */
@@ -604,23 +604,14 @@ body {
     }
 }
 @media (max-width: 768px){
-
-    .door-left{
-        display:none;
-    }
-
-    .door-right{
-        width:100%;
-        border:none;
-
-        background-image:url('assets/temple_door.jpg');
-        background-size:cover;
-        background-position:center;
-    }
-
+     .door-left{ display:none; } 
+     .door-right{ width:100%; border:none; 
+        background-image:url('assets/temple_door.jpg'); 
+        background-size:cover; background-position:center; 
+    } 
     #door-overlay.open .door-right{
-        transform:none;
-        opacity:0;
-        transition:opacity 1.5s ease;
+         transform:none;
+          opacity:0; 
+          transition:opacity 1.5s ease;
     }
-}
+ }
