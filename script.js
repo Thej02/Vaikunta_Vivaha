@@ -156,6 +156,7 @@ function openTempleDoors() {
 
     window.petalInterval =
 setInterval(createPetal, 700);
+document.getElementById("music-toggle").classList.add("show");
 }
 document.addEventListener('DOMContentLoaded', () => {
 
