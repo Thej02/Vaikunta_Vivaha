@@ -33,6 +33,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 90px;
+    color-scheme: light;
 }
 
 body {
@@ -42,6 +43,9 @@ body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    -webkit-text-size-adjust:100%;
+
+    color-scheme: light;
 }
 
 /* --- Custom Scrollbar --- */
@@ -648,4 +652,29 @@ body {
 .music-toggle.show{
     opacity:1;
     pointer-events:auto;
+}
+@media (prefers-color-scheme: dark){
+
+    html,
+    body{
+        background-color: #FFF8E7 !important;
+        color: #4a0000 !important;
+    }
+
+    .invitation-frame{
+        background: rgba(255,255,255,0.88) !important;
+    }
+
+    .countdown-box{
+        background: rgba(128,0,0,0.85) !important;
+    }
+
+    .living-bg{
+        background-image:
+            linear-gradient(
+                rgba(255,248,231,0.35),
+                rgba(255,248,231,0.35)
+            ),
+            url('assets/temple_bg.jpg') !important;
+    }
 }
