@@ -116,7 +116,7 @@ function openTempleDoors() {
 
     if (music) {
         music.currentTime = 328;
-        music.volume = 0.2;
+        music.volume = 0.5;
 
         music.play().catch(err => {
             console.log("Music blocked:", err);
@@ -255,5 +255,16 @@ mobileNavLinks.forEach(link => {
 
     updateCountdown(); // Run immediately
     const countdownInterval = setInterval(updateCountdown, 1000);
+
+});
+const music = document.getElementById("wedding-music");
+const toggleBtn = document.getElementById("music-toggle");
+
+toggleBtn.addEventListener("click", () => {
+
+    music.muted = !music.muted;
+
+    toggleBtn.textContent =
+        music.muted ? "🔇" : "🔊";
 
 });
