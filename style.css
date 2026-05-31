@@ -603,3 +603,24 @@ body {
         width: 45px !important;
     }
 }
+@media (max-width: 768px){
+
+    .door-left{
+        display:none;
+    }
+
+    .door-right{
+        width:100%;
+        border:none;
+
+        background-image:url('assets/temple_door.jpg');
+        background-size:cover;
+        background-position:center;
+    }
+
+    #door-overlay.open .door-right{
+        transform:none;
+        opacity:0;
+        transition:opacity 1.5s ease;
+    }
+}
