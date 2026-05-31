@@ -43,6 +43,7 @@ body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    text-size-adjust:100%;
     -webkit-text-size-adjust:100%;
 
     color-scheme: light;
@@ -244,43 +245,43 @@ body {
 .intro-line{
     opacity:0;
     animation:fadeUp 1.5s forwards;
-    animation-delay:3s;
+    animation-delay:1s;
 }
 
 .bride-reveal{
     opacity:0;
-    animation:nameReveal 2s forwards;
-    animation-delay:5s;
+    animation:nameReveal 1s forwards;
+    animation-delay:2s;
 }
 
 .ampersand-reveal{
     opacity:0;
     animation:fadeUp 1s forwards;
-    animation-delay:7s;
+    animation-delay:2.5s;
 }
 
 .groom-reveal{
     opacity:0;
     animation:nameReveal 2s forwards;
-    animation-delay:8s;
+    animation-delay:3s;
 }
 
 .details-1{
     opacity:0;
     animation:fadeUp 1s forwards;
-    animation-delay:10s;
+    animation-delay:3.5s;
 }
 
 .details-2{
     opacity:0;
     animation:fadeUp 1s forwards;
-    animation-delay:11s;
+    animation-delay:4s;
 }
 
 .details-3{
     opacity:0;
     animation:fadeUp 1s forwards;
-    animation-delay:12s;
+    animation-delay:4.5s;
 }
 
 @keyframes fadeUp{
