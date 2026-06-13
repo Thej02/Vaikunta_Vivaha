@@ -9,7 +9,7 @@ The website features interactive animations, background audio, event scheduling,
 This project was developed as a personalized digital wedding invitation for my cousin's marriage, combining traditional aesthetics with modern web design to create a unique experience for family and guests.
 
 ## Live Demo
-https://thej02.github.io/Vaikunta_Vivaha/
+https://rajalakshmi-weds-arun.netlify.app/
 
 ## Tech Stack
 - HTML5
